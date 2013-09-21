@@ -513,6 +513,19 @@ on boot
     # Battery
     chown system system /sys/class/power_supply/battery/batt_vol_adc_cal
     chown system radio /sys/class/power_supply/battery/fg_reset_soc
+    chown system radio /sys/class/power_supply/battery/batt_reset_soc
+    chown system radio /sys/class/power_supply/battery/factory_mode
+    chown system radio /sys/class/power_supply/battery/update
+    chown system radio /sys/class/power_supply/battery/2g_call
+    chown system radio /sys/class/power_supply/battery/3g_call
+    chown system radio /sys/class/power_supply/battery/data_call
+    chown system radio /sys/class/power_supply/battery/wifi
+    chown system radio /sys/class/power_supply/battery/lte
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/browser
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/hotspot
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/camera
 
     #Set property to change the decoder profile level to 4.1
     setprop ste.video.decoder.h264.def.lev 4.1  
