@@ -1,42 +1,64 @@
-
 on early-init
     start ueventd
 
 on init
     export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
-    export LD_LIBRARY_PATH .:/sbin
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
-    export EXTERNAL_STORAGE /sdcard0
+    export EXTERNAL_STORAGE /sdcard
 
     symlink /system/etc /etc
 
+    mkdir /boot
+    mkdir /recovery
+    mkdir /sdcard
+    mkdir /internal_sd
+    mkdir /external_sd
+    mkdir /sd-ext
+    mkdir /datadata
+    mkdir /emmc
+    mkdir /system
+    mkdir /data
     mkdir /cache
-    mkdir /efs
-    mkdir /modem
     mkdir /mnt
     mkdir /mnt/.lfs
     mkdir /preload
+    mkdir /custom
+    mkdir /efs
+    mkdir /tmp
     mkdir /sdcard0
-    mkdir /external_sd
     mount /tmp /tmp tmpfs
+
+    chown root shell /tmp
+    chmod 0775 /tmp
 
     write /sys/devices/platform/mcde_fb/graphics/fb0/bits_per_pixel 16
 
+# usb storage mount
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 04E8
     write /sys/class/android_usb/android0/idProduct 685D
     write /sys/class/android_usb/android0/bDeviceClass 0
-    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
-    write /sys/class/android_usb/android0/iProduct $ro.product.model
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/functions adb
     write /sys/class/android_usb/android0/enable 1
     write /sys/devices/platform/ab8500-i2c.0/ab8500-usb.0/boot_time_device 1
     write /sys/devices/platform/ab8505-i2c.0/ab8500-usb.0/boot_time_device 1
     setprop service.adb.root 1
+  
 
 on early-fs
+
+    mount ext4 /dev/block/mmcblk0p22 /system noatime wait
+
+    mkdir /efs
+    mount ext4 /dev/block/mmcblk0p11 /efs nosuid nodev noatime wait
+
+on early-fs
+    mkdir /mnt 0775 root root
+    mkdir /mnt/.lfs 0755 root root
     insmod /system/lib/modules/j4fs.ko
     mount j4fs /dev/block/mmcblk0p19 /mnt/.lfs wait rw
     insmod /system/lib/modules/param.ko
