@@ -336,7 +336,7 @@ on post-fs-data
 #]
 
     # Create directory for STE OMX debug logs
-    mkdir /data/ste-debug 0775 system system
+    mkdir /data/ste-debug 0777 root root
 
     # give system access to sterc_script when enabling usb nap
     copy -u /system/etc/psdata/sterc_conf /data/misc/psdata/sterc_conf
