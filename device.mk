@@ -24,18 +24,16 @@ $(call inherit-product, build/target/product/languages_full.mk)
 # Use the Dalvik VM specific for devices with 1024 MB of RAM
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Inherit the proprietary vendors blobs for Samsung Golden.
-$(call inherit-product-if-exists, vendor/samsung/golden/golden-vendor.mk)
+# Inherit the proprietary vendors blobs for Samsung codina.
+$(call inherit-product-if-exists, vendor/samsung/codina-common/codina-common-vendor.mk)
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.samsunggolden.rc:root/init.samsunggolden.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.samsunggolden.rc:root/ueventd.samsunggolden.rc \
-    $(LOCAL_PATH)/rootdir/init.samsunggolden.usb.rc:root/init.samsunggolden.usb.rc \
-    $(LOCAL_PATH)/rootdir/fstab.samsunggolden:root/fstab.samsunggolden \
+    $(LOCAL_PATH)/rootdir/init.samsungcodina.rc:root/init.samsungcodina.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.samsungcodina.rc:root/ueventd.samsungcodina.rc \
+    $(LOCAL_PATH)/rootdir/init.samsungcodina.usb.rc:root/init.samsungcodina.usb.rc \
+    $(LOCAL_PATH)/rootdir/fstab.samsungcodina:root/fstab.samsungcodina \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
-    $(LOCAL_PATH)/rootdir/lib/modules/j4fs.ko:root/lib/modules/j4fs.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/param.ko:root/lib/modules/param.ko
 
 # Inputs
 PRODUCT_COPY_FILES += \
@@ -44,8 +42,10 @@ PRODUCT_COPY_FILES += \
 # Graphics
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/lib/egl/egl.cfg:system/lib/egl/egl.cfg
+
 PRODUCT_PACKAGES += \
     libblt_hw
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     debug.hwui.render_dirty_regions=false \
@@ -58,8 +58,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/omxloaders:system/omxloaders
+
 PRODUCT_PACKAGES += \
     libomxil-bellagio
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ste.nmf.autoidle=1 \
     ste.video.dec.mpeg4.in.size=8192 \
@@ -83,8 +85,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 PRODUCT_PACKAGES += \
     libnetcmdiface
+
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
@@ -98,9 +102,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/ste_modem.sh:system/etc/ste_modem.sh \
     $(LOCAL_PATH)/configs/etc/cspsa.conf:system/etc/cspsa.conf \
-    $(LOCAL_PATH)/configs/etc/AT/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
-    $(LOCAL_PATH)/configs/etc/AT/model_id.cfg:system/etc/AT/model_id.cfg \
-    $(LOCAL_PATH)/configs/etc/AT/system_id.cfg:system/etc/AT/system_id.cfg
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.ril_class=SamsungU8500RIL \
@@ -117,6 +119,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf
+
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \

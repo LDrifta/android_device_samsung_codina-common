@@ -1,7 +1,7 @@
 # NOTE: This file contains ST-Ericsson related additions/modifications/deletions to init.rc
 #       Commented out lines are kept for reference.
 
-import /init.samsunggolden.usb.rc
+import /init.samsungcodina.usb.rc
 
 on init
 
@@ -50,7 +50,7 @@ on init
     chmod 0644 /proc/cmdline
 
 on fs
-    mount_all /fstab.samsunggolden
+    mount_all /fstab.samsungcodina
     setprop ro.crypto.fuse_sdcard true
     start cspsa
 
@@ -266,13 +266,13 @@ on post-fs
     chmod 0660 /debug/prcmu/ddr_opp
 
     # Install Kernel Module
-    insmod /lib/modules/j4fs.ko
+    insmod /system/lib/modules/j4fs.ko
 
     # We need to decide j4fs's partition number(mmcblk0pX)
     mount j4fs /dev/block/mmcblk0p19 /mnt/.lfs wait
     symlink /dev/block/mmcblk0p19 /dev/block/param
 
-    insmod /lib/modules/param.ko
+    insmod /system/lib/modules/param.ko
     insmod /system/lib/modules/bthid.ko
 
     # AB8500 Fuelgauge initialization using PARAM capacity
