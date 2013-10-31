@@ -94,8 +94,7 @@ BOARD_RIL_CLASS := ../../../device/samsung/codina-common/ril/
 ENABLE_WEBGL := true
 
 # Audio
-BOARD_USES_ALSA_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
+BOARD_USES_GENERIC_AUDIO := false
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 25
