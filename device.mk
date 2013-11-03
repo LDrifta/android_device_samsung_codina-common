@@ -118,14 +118,11 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf \
-    $(LOCAL_PATH)libaudio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_PACKAGES += \
-    audio_policy.DB8520H \
-    audio.primary.DB8520H \
     audio.a2dp.default \
     audio.usb.default \
-    libaudioutils
+    libasound
 
 # Sensors
 PRODUCT_PACKAGES += \
