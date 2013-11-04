@@ -123,7 +123,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    libasound
+
+# inherit alsa-lib-products.mk
+$(call inherit-product, device/samsung/codina-common/libasound/alsa-lib-products.mk)
 
 # Sensors
 PRODUCT_PACKAGES += \
