@@ -93,6 +93,9 @@ BOARD_RIL_CLASS := ../../../device/samsung/codina-common/ril/
 # Browser
 ENABLE_WEBGL := true
 
+# Indicate the lack of sync framework.
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 

@@ -118,6 +118,7 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf \
+    $(LOCAL_PATH)/configs/etc/audio_effects.conf:system/etc/audio_effects.conf \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
