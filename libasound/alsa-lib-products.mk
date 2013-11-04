@@ -8,9 +8,9 @@ PRODUCT_PACKAGES += libasound
 ##
 ## Copy ALSA configuration files to rootfs
 ##
-LOCAL_PATH := external/alsa-lib
+LOCAL_PATH := $(call my-dir)
 TARGET_ALSA_CONF_DIR := system/usr/share/alsa
-LOCAL_ALSA_CONF_DIR  := $(LOCAL_PATH)/src/conf
+LOCAL_ALSA_CONF_DIR  := device/samsung/codina-common/libasound/src/conf
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_ALSA_CONF_DIR)/alsa.conf:$(TARGET_ALSA_CONF_DIR)/alsa.conf \

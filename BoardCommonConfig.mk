@@ -96,6 +96,8 @@ ENABLE_WEBGL := true
 # Indicate the lack of sync framework.
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
+TARGET_KERRNEL_CUSTM_TOOLCHAIN := arm-eabi-4.7
+TARGET_GCC_VERSION := 4.7
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
